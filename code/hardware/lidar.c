@@ -1,3 +1,20 @@
+/*
+Author: Mark Livingston
+
+LiDAR Communication Code: Communicates with LiDAR module over UART. 
+    Requires just the UART TX pin to be connected, and doesnt require 
+    transmitting to the module whatsoever. 
+
+Expected output of code is:
+
+(angle in degrees, 3 sig figs, distance in mm);
+
+Code outputs in bursts of 12 measurements, as each UART packets contains
+    12 full measurements.
+*/
+
+
+
 #include <stdio.h>
 #include <stdint.h>
 #include <fcntl.h>
@@ -36,8 +53,8 @@ void report() {
 
 
     for (int i = 0; i < 12; ++i) {
-        float angle = (start_angle / 100.0f) + ((degree_offset * i) / 100.0f);
-        angle = (float)((int)(angle * 100.0f + 36000.0f) % 36000) / 100.0f;
+        float angle = (start_angle / 100.0f) + ((degree_offset * i) / 100.000f);
+        angle = (float)((int)(angle * 100.0f + 36000.0f) % 36000) / 100.000f;
 
         printf("%f,%d\n", angle, data[i][0]);
     }
