@@ -1,6 +1,6 @@
 # ASGC Autonomous Vehicle Challenge:
 
-#### Team Members:
+### Team Members:
 // Put your name below:
 - Mark Livingston
 - John Engineer
