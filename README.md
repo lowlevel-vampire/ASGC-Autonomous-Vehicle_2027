@@ -6,3 +6,4 @@
 - John Engineer
 - Chase Haskell
 - Michael Knepler
+- Fernando Navarrete
