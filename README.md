@@ -6,3 +6,4 @@
 - Chase Haskell
 - Michael Knepler
 - Fernando Navarrete
+- Micah Livingston
