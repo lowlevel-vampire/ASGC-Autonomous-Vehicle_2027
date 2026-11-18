@@ -1,0 +1,12 @@
+• goto <x> <y> [is_bucket]: Set target coordinates for navigation. is_bucket = 1 if targeting a bucket. Ex: goto 12.5 8.0 1
+• pulse <left_ns> <right_ns>: Drives the motors by setting PWM pulse widths in nanoseconds.  Ex: pulse 1600000 1400000
+• speed <scale>: Sets global speed scale from 0.0 to 1.0 Ex: speed 0.25
+• setpwm <min_percent> <max_percent>: Sets min and max motor PWM ranges for forward and reverse throttle limits. Ex: setpwm 45 80
+• setpos <x> <y> <heading>: Overrides current internal odometry position and heading directly. Ex: setpos 0.0 15.0 0.0
+• calibrate: Runs a 500-sample IMU calibration routine and resets the odometry coordinates to (0.0, 15.0) with a heading of 0.0
+• regular_mode: Exits ML/autonomous mode, disables the ML workflow, neutralizes both motor PWM outputs, and sets the system back to MODE_IDLE
+• stop / stopall: Immediately cuts power to both motors, resets all encoder targets, switches to MODE_IDLE, and dumps telemetry log buffer
+• ml_mode: Switches to MODE_ML, clears motion targets, and initiates the autonomous ball collection workflow
+• ml_ball_acquired <0|1|true|false|yes|no|on|off>: Signals whether the robot has physically captured a ball. If a ball color is already assigned, triggers autonomous routing toward that color’s target bucket. Ex: ml_ball_acquired 1
+• ml_ball_color <red|yellow|blue|green|none|clear>: Updates the detected color of the target ball and assigns the destination bucket coordinates. Automatically dispatches the robot if a ball has already been acquired. Ex: ml_ball_color blue
+• q: Sets running = 0, causing the command listener loop and process to shut down cleanly
